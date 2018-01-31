@@ -48,8 +48,6 @@ export default class Geocoder extends Component {
   _onChange = (value: any) => {
     const {clientId, clientSecret, forStorage, onChange} = this.props
 
-    console.log(value)
-
     // check to see if value is a geolocate result or autocomplete value
     if (value.feature) {
       onChange && onChange(value.feature)
@@ -63,7 +61,6 @@ export default class Geocoder extends Component {
         forStorage,
         text: value.text
       }).then(result => {
-        console.log(result)
         onChange && onChange(result.features[0])
       })
       .catch(err => {
