@@ -13,6 +13,8 @@ type Props = {
       maxLon: number
     }
   },
+  clientId?: string,
+  clientSecret?: string,
   featureToLabel?: () => void,
   featureToValue?: () => void,
   findingLocationText?: string,
@@ -32,14 +34,19 @@ export default class Geocoder extends Component {
   props: Props
 
   static defaultProps = {
-    featureToLabel: (feature) => feature.text,
+    featureToLabel: (feature) => {
+      // feature can be either an autocomplete result or a reverse result
+      // return the proper label based on what the object looks like
+      return feature.magicKey
+        ? feature.text
+        : feature.properties.label
+    },
     featureToValue: (feature) => `${feature.text}-${feature.magicKey}`,
-    reverseSearch: reverse,
     search: autocomplete
   }
 
   _onChange = (value: any) => {
-    const {forStorage, onChange} = this.props
+    const {clientId, clientSecret, forStorage, onChange} = this.props
 
     console.log(value)
 
@@ -50,6 +57,8 @@ export default class Geocoder extends Component {
       // result is autocomplete result without address or coordinate data
       // do geocode to get info
       search({
+        clientId,
+        clientSecret,
         magicKey: value.magicKey,
         forStorage,
         text: value.text
@@ -64,12 +73,27 @@ export default class Geocoder extends Component {
     }
   }
 
+  _getReverseSearch () {
+    if (this.props.reverseSearch) {
+      return this.props.reverseSearch
+    } else {
+      const {clientId, clientSecret, forStorage} = this.props
+      return (query: any) => {
+        query.clientId = clientId
+        query.clientSecret = clientSecret
+        query.forStorage = forStorage
+        return reverse(query)
+      }
+    }
+  }
+
   render () {
     return (
       <GeocodeSelect
         {...this.props}
         apiKey='dummy' // include because it's a required propType in react-select-geocoder
         onChange={this._onChange}
+        reverseSearch={this._getReverseSearch()}
         />
     )
   }
