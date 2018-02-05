@@ -1,6 +1,6 @@
 {
   "name": "@conveyal/react-select-geocoder-arcgis",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "description": "A geocoder that uses React-select and the ArcGIS geocoder",
   "main": "./build/index.js",
   "scripts": {
