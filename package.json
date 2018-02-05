@@ -1,0 +1,48 @@
+{
+  "name": "@conveyal/react-select-geocoder-arcgis",
+  "version": "1.0.0",
+  "description": "A geocoder that uses React-select and the ArcGIS geocoder",
+  "main": "./build/index.js",
+  "scripts": {
+    "flow": "mastarm flow",
+    "lint": "mastarm lint",
+    "prepublish": "mastarm prepublish index.js:build/index.js",
+    "prestart": "yarn",
+    "start": "mastarm build --serve example.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "mastarm lint && mastarm flow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conveyal/react-select-geocoder-arcgis.git"
+  },
+  "keywords": [
+    "geocoder",
+    "react",
+    "select",
+    "arcgis"
+  ],
+  "author": "Evan Siroky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/conveyal/react-select-geocoder-arcgis/issues"
+  },
+  "homepage": "https://github.com/conveyal/react-select-geocoder-arcgis#readme",
+  "devDependencies": {
+    "eslint-plugin-jest": "^21.7.0",
+    "flow-bin": "0.44.0",
+    "mastarm": "^3.11.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "semantic-release": "^6.3.6"
+  },
+  "dependencies": {
+    "@conveyal/geocoder-arcgis-geojson": "0.0.1",
+    "react-select-geocoder": "^1.2.1"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
