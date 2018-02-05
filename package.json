@@ -1,6 +1,6 @@
 {
   "name": "@conveyal/react-select-geocoder-arcgis",
-  "version": "0.0.0-semantically-released",
+  "version": "1.0.0",
   "description": "A geocoder that uses React-select and the ArcGIS geocoder",
   "main": "./build/index.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "semantic-release": "^6.3.6"
   },
   "dependencies": {
-    "@conveyal/geocoder-arcgis-geojson": "https://github.com/conveyal/geocoder-arcgis-geojson#dev",
+    "@conveyal/geocoder-arcgis-geojson": "0.0.1",
     "react-select-geocoder": "^1.2.1"
   },
   "peerDependencies": {
