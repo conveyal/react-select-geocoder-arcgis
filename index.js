@@ -16,7 +16,7 @@ type Props = {
   clientId?: string,
   clientSecret?: string,
   featureToLabel?: () => void,
-  featureToValue?: () => void,
+  featureToValue?: () => string,
   findingLocationText?: string,
   focusPoint?: any,
   forStorage?: boolean,
